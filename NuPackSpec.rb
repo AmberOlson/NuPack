@@ -15,4 +15,9 @@ describe "NuPack" do
         results = @sut.calculate(100, 1)
         expect(results).to   eq(106.26)
     end
+
+    it "calculates the correct mark up for multiple person working on the job" do
+        results = @sut.calculate(100, 2)
+        expect(results).to   eq(107.52)
+    end
 end
