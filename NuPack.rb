@@ -1,7 +1,11 @@
 class NuPack
 
-    def calculate(basePrice)
+    def calculate(basePrice, person)
         basePricePlusFLat = basePrice + (basePrice * 0.05)
-        return basePricePlusFLat
+
+        personMarkUp = (basePricePlusFLat * 0.012) * person
+
+        estimate = basePricePlusFLat + personMarkUp
+
     end
 end
