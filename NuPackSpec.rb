@@ -25,4 +25,5 @@ describe "NuPack" do
         results = @sut.calculate(100, 2, "Pharmaceutical")
         expect(results).to   eq(115.40)
     end
+
 end
