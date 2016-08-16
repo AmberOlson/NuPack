@@ -1,0 +1,1 @@
+rspec NuPackSpec.rb --color
