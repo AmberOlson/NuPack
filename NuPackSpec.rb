@@ -31,4 +31,15 @@ describe "NuPack" do
         expect(results).to   eq(115.40)
     end
 
+    it "calculated markup based on real world example" do
+       results = @sut.calculate(1299.99, 3, "food")
+       expect(results).to   eq(1591.58)
+
+       results = @sut.calculate(12456.95, 4, "books")
+       expect(results).to   eq(13707.63)
+
+       results = @sut.calculate(5432.00, 1, "drugs")
+       expect(results).to   eq(6199.81)
+   end
+
 end

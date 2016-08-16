@@ -2,8 +2,6 @@ class NuPack
 
     def calculate(basePrice, person, material)
 
-        classificationMarkups = {"pharmaceutical" => 0.075, "food" => 0.13, "electronic" => 0.02}
-
         # caculates a flat markup on all jobs of 5%
         basePricePlusFLat = basePrice + (basePrice * 0.05)
 
@@ -11,17 +9,21 @@ class NuPack
         personMarkup = (basePricePlusFLat * 0.012) * person
 
         # caculates a markup for material used on the job
-        #and sets a default value of 0 for products not part of the classification
-        materialMarkupPercent = classificationMarkups[classifyMaterial(material.downcase)] || 0
-        materialMarkup = basePricePlusFLat * materialMarkupPercent
+        materialMarkup = basePricePlusFLat * getMarkup(material.downcase)
 
-        #total estimate for the project
+        # total estimate for the project
         (basePricePlusFLat + personMarkup + materialMarkup).round(2)
 
     end
 
-    def classifyMaterial (material)
+    def getMarkup (material)
         materialClassification = {"drug" => "pharmaceutical", "drugs" => "pharmaceutical", "pizza" => "food"}
-        materialClassification[material] || material
+        classificationMarkups = {"pharmaceutical" => 0.075, "food" => 0.13, "electronic" => 0.02}
+
+        #classify the material into know classification or default on users input
+        classifiedMaterial = materialClassification[material] || material
+
+        #determines unique percent based on material classification ro default on no markup
+        classificationMarkups[classifiedMaterial] || 0
     end
 end
