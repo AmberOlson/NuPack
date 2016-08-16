@@ -26,4 +26,9 @@ describe "NuPack" do
         expect(results).to   eq(115.40)
     end
 
+    it "correctly changes the classification to pharmaceuticals instead of drugs" do
+        results = @sut.calculate(100, 2, "Drugs")
+        expect(results).to   eq(115.40)
+    end
+
 end
